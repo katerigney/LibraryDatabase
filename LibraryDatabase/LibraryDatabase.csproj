@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -177,11 +183,46 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Data\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804191801216_AddedBooksTable.cs" />
+    <Compile Include="Migrations\201804191801216_AddedBooksTable.Designer.cs">
+      <DependentUpon>201804191801216_AddedBooksTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191813473_AddedAuthorTable.cs" />
+    <Compile Include="Migrations\201804191813473_AddedAuthorTable.Designer.cs">
+      <DependentUpon>201804191813473_AddedAuthorTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191816456_AddedGenresTable.cs" />
+    <Compile Include="Migrations\201804191816456_AddedGenresTable.Designer.cs">
+      <DependentUpon>201804191816456_AddedGenresTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191818292_ChangedAuthorDiedDateToBeNullable.cs" />
+    <Compile Include="Migrations\201804191818292_ChangedAuthorDiedDateToBeNullable.Designer.cs">
+      <DependentUpon>201804191818292_ChangedAuthorDiedDateToBeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191827519_AddedLedgerTable.cs" />
+    <Compile Include="Migrations\201804191827519_AddedLedgerTable.Designer.cs">
+      <DependentUpon>201804191827519_AddedLedgerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191831236_AddedDbsetForLedger.cs" />
+    <Compile Include="Migrations\201804191831236_AddedDbsetForLedger.Designer.cs">
+      <DependentUpon>201804191831236_AddedDbsetForLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.cs" />
+    <Compile Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.Designer.cs">
+      <DependentUpon>201804191838308_AddedRelationshipsBetweenTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\CheckOutLedger.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,7 +279,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -252,6 +292,29 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804191801216_AddedBooksTable.resx">
+      <DependentUpon>201804191801216_AddedBooksTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191813473_AddedAuthorTable.resx">
+      <DependentUpon>201804191813473_AddedAuthorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191816456_AddedGenresTable.resx">
+      <DependentUpon>201804191816456_AddedGenresTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191818292_ChangedAuthorDiedDateToBeNullable.resx">
+      <DependentUpon>201804191818292_ChangedAuthorDiedDateToBeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191827519_AddedLedgerTable.resx">
+      <DependentUpon>201804191827519_AddedLedgerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191831236_AddedDbsetForLedger.resx">
+      <DependentUpon>201804191831236_AddedDbsetForLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.resx">
+      <DependentUpon>201804191838308_AddedRelationshipsBetweenTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
