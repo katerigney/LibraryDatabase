@@ -241,6 +241,7 @@
     <Compile Include="Models\CheckOutLedger.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PostBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

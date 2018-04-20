@@ -20,11 +20,15 @@ namespace LibraryDatabase.Controllers
             return db.Books.ToList();
         }
 
+
         //Add a new Book
         public Book Post(PostBook bookData)
         {
-            Author author = GetAuthor(bookData);
-            //Genre genre = CheckGenre(bookData);
+            var db = new DataContext();
+            //var fullDB = db.Books.Include(i => i.Author).Include(i => i.Genre);
+
+            Author author = db.Authors.First(x => x.Name == bookData.AuthorName);
+            Genre genre = db.Genres.First(x => x.Name == bookData.GenreName);
 
             var newBook = new Book
             {
@@ -32,34 +36,19 @@ namespace LibraryDatabase.Controllers
                 YearPublished = bookData.YearPublished,
                 Condition = bookData.Condition,
                 AuthorID = author.ID,
-                //GenreID = genre.ID,
+                GenreID = genre.ID,
                 ISBN = bookData.ISBN,
                 IsCheckedOut = bookData.IsCheckedOut,
-                DueByDate = bookData.DueByDate
             };
 
-            var db = new DataContext();
             db.Books.Add(newBook);
             db.SaveChanges();
             newBook.Author = author;
-            //newBook.Genre = genre;
+            newBook.Genre = genre;
             return newBook;
         }
 
-
-        var db = new DataContext();
-            newBook = db.Books
-              .Include(i => i.Genre)
-              .Include(i => i.Author)
-              .First(book => book.GenreID == Genre.ID);
-            db.Books.Include(b => b.Genre);
-            newBook.Genre = 
-            db.Books.Add(newBook);
-            db.SaveChanges();
-            return newBook;
-        }
-
-
-        //Add a new Author
     }
+    //Add a new Author
 }
+
