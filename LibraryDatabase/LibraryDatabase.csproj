@@ -183,6 +183,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -217,6 +218,22 @@
     <Compile Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.cs" />
     <Compile Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.Designer.cs">
       <DependentUpon>201804191838308_AddedRelationshipsBetweenTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191928478_ChangedDueByDateInBooksToBeNullable.cs" />
+    <Compile Include="Migrations\201804191928478_ChangedDueByDateInBooksToBeNullable.Designer.cs">
+      <DependentUpon>201804191928478_ChangedDueByDateInBooksToBeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804201311051_Test.cs" />
+    <Compile Include="Migrations\201804201311051_Test.Designer.cs">
+      <DependentUpon>201804201311051_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804201321099_DiscardediCollection.cs" />
+    <Compile Include="Migrations\201804201321099_DiscardediCollection.Designer.cs">
+      <DependentUpon>201804201321099_DiscardediCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804201551438_AddedISBNtoBooks.cs" />
+    <Compile Include="Migrations\201804201551438_AddedISBNtoBooks.Designer.cs">
+      <DependentUpon>201804201551438_AddedISBNtoBooks.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
@@ -314,6 +331,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804191838308_AddedRelationshipsBetweenTables.resx">
       <DependentUpon>201804191838308_AddedRelationshipsBetweenTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191928478_ChangedDueByDateInBooksToBeNullable.resx">
+      <DependentUpon>201804191928478_ChangedDueByDateInBooksToBeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804201311051_Test.resx">
+      <DependentUpon>201804201311051_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804201321099_DiscardediCollection.resx">
+      <DependentUpon>201804201321099_DiscardediCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804201551438_AddedISBNtoBooks.resx">
+      <DependentUpon>201804201551438_AddedISBNtoBooks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,10 @@ namespace LibraryDatabase.Models
         public DateTime Born { get; set; }
         public DateTime? Died { get; set; }
 
-        public ICollection<Book> Books { get; set; } = new HashSet<Book>();
+        //public int BookID { get; set; }
+        //public Book Book { get; set; }
+
+        //public ICollection<Book> Books { get; set; } = new HashSet<Book>();
 
     }
 }

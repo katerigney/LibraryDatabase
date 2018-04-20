@@ -12,7 +12,8 @@ namespace LibraryDatabase.Models
         public string YearPublished { get; set; }
         public string Condition { get; set; }
         public bool IsCheckedOut { get; set; }
-        public DateTime DueByDate { get; set; }
+        public DateTime? DueByDate { get; set; }
+        public string ISBN { get; set; }
 
         public int GenreID { get; set; }
         public Genre Genre { get; set; }
