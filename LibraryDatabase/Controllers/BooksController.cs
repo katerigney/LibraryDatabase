@@ -25,7 +25,6 @@ namespace LibraryDatabase.Controllers
         public Book Post(PostBook bookData)
         {
             var db = new DataContext();
-            //var fullDB = db.Books.Include(i => i.Author).Include(i => i.Genre);
 
             Author author = db.Authors.First(x => x.Name == bookData.AuthorName);
             Genre genre = db.Genres.First(x => x.Name == bookData.GenreName);
