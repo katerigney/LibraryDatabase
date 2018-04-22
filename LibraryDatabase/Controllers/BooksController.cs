@@ -22,6 +22,7 @@ namespace LibraryDatabase.Controllers
 
 
         //Add a new Book
+        //Need to add null checking (Author and Genre)
         public Book Post(PostBook bookData)
         {
             var db = new DataContext();
