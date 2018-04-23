@@ -14,11 +14,11 @@ namespace LibraryDatabase.Controllers
     public class CheckOutManagementController : ApiController
     {
         //CHECKOUT
-        public string PutCheckOutBook(string ID)
+        public string PutCheckOutIn(string ID)
         {
             var db = new DataContext();
             var bookToLendID = Convert.ToInt32(ID);
-            var CheckOutReciept = "";
+            var Message = "";
 
             Book bookToLend = db.Books.First(book => book.ID == bookToLendID);
 
@@ -35,13 +35,15 @@ namespace LibraryDatabase.Controllers
                 };
                 db.CheckOutLedger.Add(newCheckout);
                 db.SaveChanges();
-                CheckOutReciept = $"You have checked out {bookToLend.Title}. It is due by {bookToLend.DueByDate}";
+                Message = $"You have checked out {bookToLend.Title}. It is due by {bookToLend.DueByDate}";
             }
             else
             {
-                CheckOutReciept = $"This book is unavailable for checkout";
+                bookToLend.IsCheckedOut = false;
+                bookToLend.DueByDate = null;
+                Message = $"This book is unavailable for checkout.";
             }
-            return CheckOutReciept;
+            return Message;
         }
     }
 }
