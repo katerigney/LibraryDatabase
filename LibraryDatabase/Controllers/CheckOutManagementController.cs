@@ -14,41 +14,35 @@ namespace LibraryDatabase.Controllers
     public class CheckOutManagementController : ApiController
     {
         //CHECKOUT
-    //    public CheckOutLedger PutCheckOutBook(string ID)
-    //    {
-    //        var db = new DataContext();
-    //        var bookToLendID = Convert.ToInt32(ID);
+        public string PutCheckOutBook(string ID)
+        {
+            var db = new DataContext();
+            var bookToLendID = Convert.ToInt32(ID);
+            var CheckOutReciept = "";
 
-    //        Book bookToLend = db.Books.First(book => book.ID == bookToLendID);
-    //        if (bookToLend.IsCheckedOut == false)
-    //        {
-    //            bookToLend.IsCheckedOut = true;
-    //            var newCheckout = new CheckOutLedger()
-    //            {
-    //                Name
-    //            //BookID = bookID,
-    //            TimeStamp = DateTime.Now,
-    //            Email = userCheckout.Email,
-    //            BookStatus = "Checking out"
+            Book bookToLend = db.Books.First(book => book.ID == bookToLendID);
 
-    //            public int ID { get; set; }
-    //    public string Name { get; set; }
-    //    public string UserEmail { get; set; }
-    //    public DateTime Timestamp { get; set; }
-    //    public int BookID { get; set; }
-    //    public Book Book { get; set; }
-    //};
-    //        }
-    //        }
-
-    //        return CheckOuReciept;
-    //    }
-
-        //need bool property 'IsCheckedOut' on book = false
-        //need Book ID
-        //need user email
-        //timestamp
-
-
+            if (bookToLend.IsCheckedOut == false)
+            {
+                bookToLend.IsCheckedOut = true;
+                bookToLend.DueByDate = DateTime.Now.AddDays(14);
+                var newCheckout = new CheckOutLedger()
+                {
+                    Timestamp = DateTime.Now,
+                    //UserEmail = ,
+                    BookID = bookToLend.ID,
+                    Book = bookToLend
+                };
+                db.CheckOutLedger.Add(newCheckout);
+                db.SaveChanges();
+                CheckOutReciept = $"You have checked out {bookToLend.Title}. It is due by {bookToLend.DueByDate}";
+            }
+            else
+            {
+                CheckOutReciept = $"This book is unavailable for checkout";
+            }
+            return CheckOutReciept;
+        }
     }
 }
+
