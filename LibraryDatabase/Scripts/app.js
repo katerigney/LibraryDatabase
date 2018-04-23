@@ -9,9 +9,9 @@
             }).then(resp => {
                 console.log(resp.data);
                 $scope.allBooks = resp.data;
-                })
+            })
         }
-        
+
         $scope.getAvailableBooks = () => {
             $http({
                 method: "GET",
@@ -22,15 +22,26 @@
             })
         }
 
-        //$scope.checkOutBook = (ID, userEmail) => {
-        //    $http({
-        //        method: "PUT",
-        //        url: 'api/CheckOutManagement/${ID}/',
-        //        data: JSON.stringify(email:'${userEmail}')
-        //    }).then(resp => {
-        //        console.log(resp.data);
-        //        $scope.checkOutReciept = resp.data;
-        //    })
-        //}
-        
+        $scope.checkOutBook = () => {
+            console.log($scope.bookToLend, $scope.userEmail);
+            //search based on user input (title ) to get ID
+            $http({
+                method: "GET",
+                url: "/api/books"
+            }).then(resp => {
+                console.log(resp.data);
+                $scope.allBooks = resp.data;
+                })
+
+            //then use ID to put (checkout)
+            $http({
+                method: "PUT",
+                url: "api/CheckOutManagement/" + $scope.bookToLend + "/",
+               // data: { Email: "$scope.userEmail" }
+            }).then(resp => {
+                console.log(resp.data);
+                $scope.checkOutReciept = resp.data;
+            })
+        }
+
     }]);
