@@ -13,13 +13,11 @@ namespace LibraryDatabase.Controllers
 {
     public class BooksController : ApiController
     {
-        //for Checkout, need to add if logic with the bool property 'IsCheckedOut' on book
         public IEnumerable<Book> GetAllBooks()
         {
             var db = new DataContext();
             return db.Books.ToList();
         }
-
 
         //Add a new Book
         //Need to add null checking (Author and Genre)
@@ -49,6 +47,5 @@ namespace LibraryDatabase.Controllers
         }
 
     }
-    //Add a new Author
 }
 

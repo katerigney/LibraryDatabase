@@ -14,7 +14,6 @@ namespace LibraryDatabase.Controllers
     public class AvailableBooksController : ApiController
     {
         [HttpGet]
-
         public IEnumerable<Book> SearchAvailableBooks()
         {
             var db = new DataContext();

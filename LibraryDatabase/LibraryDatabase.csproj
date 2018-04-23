@@ -186,6 +186,7 @@
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\AvailableBooksController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CheckOutManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchBooksController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -236,6 +237,10 @@
     <Compile Include="Migrations\201804201551438_AddedISBNtoBooks.cs" />
     <Compile Include="Migrations\201804201551438_AddedISBNtoBooks.Designer.cs">
       <DependentUpon>201804201551438_AddedISBNtoBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230022006_RemovedNameFromCheckOutLedger.cs" />
+    <Compile Include="Migrations\201804230022006_RemovedNameFromCheckOutLedger.Designer.cs">
+      <DependentUpon>201804230022006_RemovedNameFromCheckOutLedger.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
@@ -347,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804201551438_AddedISBNtoBooks.resx">
       <DependentUpon>201804201551438_AddedISBNtoBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230022006_RemovedNameFromCheckOutLedger.resx">
+      <DependentUpon>201804230022006_RemovedNameFromCheckOutLedger.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
