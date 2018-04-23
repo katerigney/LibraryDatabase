@@ -1,9 +1,31 @@
-﻿<div class="jumbotron" ng-app="libraryApp" ng-controller="mainController">
+﻿<div ng-app="libraryApp" ng-controller="mainController">
     <h1>SDG Library! </h1>
+
+    <section class="nav">
+    <!--Seeing all books-->
+    <!-- Need a button where all the books are displayed.-->
     <button class="button" ng-click="getAllBooks()">View all books</button>
-    <div>
+
+    <!--Searching for a book to checkout-->
+    <!-- Need a button where all the AVAILABLE books are displayed-->
+    <button ng-click="getAvailableBooks()">View available books</button>
+   
+    <!--Checking out a book-->
+    <!--<form>
+        <input type="text" placeholder="Book title" ng-model="bookToLend">
+        <input type="text" placeholder="Your Email" ng-model="userEmail">
+        <button type="button" ng-click="checkOutBook(bookToLend, userEmail)">Answer</button>
+    </form>-->
+    <!--Checking a book back -->
+     </section>
+
+
+    <div class="results">
         <div ng-repeat="book in allBooks track by $index">
-            <h5>{{book.Title}}, written by {{ book.Author.Name}}, Genre: {{book.Genre.Name}}</h5> 
+            <h5>{{book.Title}}, written by {{ book.Author.Name}}, Genre: {{book.Genre.Name}}</h5>
+        </div>
+        <div ng-repeat="book in availableBooks track by $index">
+            <h5>{{book.Title}}, written by {{ book.Author.Name}}, Genre: {{book.Genre.Name}}</h5>
         </div>
     </div>
 </div>
