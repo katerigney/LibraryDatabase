@@ -1,8 +1,9 @@
-﻿    <div class="jumbotron" ng-app="libraryApp" ng-controller="mainController">
-        <h1>You loaded this page at {{currentTime}} </h1>
-        <div>
-            <div ng-repeat="book in books track by $index">
-                {{book.Title}}, written by {{ book.Author.Name}}, Genre: {{book.Genre.Name}}
-            </div>
+﻿<div class="jumbotron" ng-app="libraryApp" ng-controller="mainController">
+    <h1>SDG Library! </h1>
+    <button class="button" ng-click="getAllBooks()">View all books</button>
+    <div>
+        <div ng-repeat="book in allBooks track by $index">
+            <h5>{{book.Title}}, written by {{ book.Author.Name}}, Genre: {{book.Genre.Name}}</h5> 
         </div>
     </div>
+</div>
