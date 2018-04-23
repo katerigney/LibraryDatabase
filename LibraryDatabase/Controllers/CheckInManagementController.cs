@@ -13,11 +13,9 @@ namespace LibraryDatabase.Controllers
 {
     public class CheckInManagementController : ApiController
     {
-        //CHECKOUT
-        public string PutCheckOutIn(string ID)
+        public string PutCheckOutIn(int bookToReturnID)
         {
             var db = new DataContext();
-            var bookToReturnID = Convert.ToInt32(ID);
             var Message = "";
 
             Book bookToReturn = db.Books.First(book => book.ID == bookToReturnID);
@@ -27,6 +25,7 @@ namespace LibraryDatabase.Controllers
                 bookToReturn.IsCheckedOut = false;
                 bookToReturn.DueByDate = null;
                 db.SaveChanges();
+                //FROM LECTURE: Use a view model for message (bc scaling)
                 Message = $"Thanks for returning {bookToReturn.Title}";
             }
             else

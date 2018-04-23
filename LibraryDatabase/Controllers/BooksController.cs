@@ -16,7 +16,8 @@ namespace LibraryDatabase.Controllers
         public IEnumerable<Book> GetAllBooks()
         {
             var db = new DataContext();
-            return db.Books.ToList();
+            var query = db.Books.Include(i => i.Author).Include(i => i.Genre);
+            return query.ToList();
         }
 
         //Add a new Book

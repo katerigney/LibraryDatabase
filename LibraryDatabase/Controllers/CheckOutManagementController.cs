@@ -14,10 +14,9 @@ namespace LibraryDatabase.Controllers
     public class CheckOutManagementController : ApiController
     {
         //CHECKOUT
-        public string PutCheckOutIn(string ID)
+        public string PutCheckOutIn(int bookToLendID, [FromBody] UserEmail data) 
         {
             var db = new DataContext();
-            var bookToLendID = Convert.ToInt32(ID);
             var Message = "";
 
             Book bookToLend = db.Books.First(book => book.ID == bookToLendID);
@@ -29,12 +28,13 @@ namespace LibraryDatabase.Controllers
                 var newCheckout = new CheckOutLedger()
                 {
                     Timestamp = DateTime.Now,
-                    //UserEmail = ,
+                    UserEmail = data.Email,
                     BookID = bookToLend.ID,
                     Book = bookToLend
                 };
                 db.CheckOutLedger.Add(newCheckout);
                 db.SaveChanges();
+                //FROM LECTURE: Use a view model for message (bc scaling)
                 Message = $"You have checked out {bookToLend.Title}. It is due by {bookToLend.DueByDate}";
             }
             else
