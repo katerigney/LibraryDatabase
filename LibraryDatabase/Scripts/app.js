@@ -27,21 +27,23 @@
             //search based on user input (title ) to get ID
             $http({
                 method: "GET",
-                url: "/api/books"
+                url: `/api/searchbooks?title=${$scope.bookToLend}`
             }).then(resp => {
                 console.log(resp.data);
-                $scope.allBooks = resp.data;
-                })
+                $scope.currentBook = resp.data;
+                console.log(currentBook)
+                }).then(
 
             //then use ID to put (checkout)
             $http({
                 method: "PUT",
-                url: "api/CheckOutManagement/" + $scope.bookToLend + "/",
-               // data: { Email: "$scope.userEmail" }
+                url: `api/CheckOutManagement/${currentBook.ID}`,
+                data: { Email: "$scope.userEmail" }
             }).then(resp => {
                 console.log(resp.data);
                 $scope.checkOutReciept = resp.data;
-            })
+            }))     
         }
-
     }]);
+
+//for check in will still need book ID
